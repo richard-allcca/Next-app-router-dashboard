@@ -31,6 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Learn Next.js](https://nextjs.org/learn)
 - [Next Images](https://nextjs.org/docs/app/api-reference/components/image)
+- [React icons](https://react-icons.github.io/react-icons/)
 
 ## How to Use Images
 
