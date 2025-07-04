@@ -26,12 +26,29 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Next Image
 
+- Manejo de Metadata dinámica
+
+- Páginas generadas del lado del servidor - SGR
+
+- Páginas de errores
+
+- Validación de argumentos
+
+- Redirecciones
+
+- Prioridad de Carga de imágenes
+
+- Tipos de revalidación con Fetch y sin Fetch
+
 ## Useful Links
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Learn Next.js](https://nextjs.org/learn)
 - [Next Images](https://nextjs.org/docs/app/api-reference/components/image)
 - [React icons](https://react-icons.github.io/react-icons/)
+- [Next.js Fetching Data](https://nextjs.org/docs/app/getting-started/fetching-data)
+- [Next.js Image priority](https://nextjs.org/docs/app/api-reference/components/image#priority)
+- [Next.js Handling Errors](https://nextjs.org/docs/app/getting-started/error-handling)
 
 ## How to Use Images
 

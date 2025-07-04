@@ -17,10 +17,10 @@ const MenuItems = [
     subtitle: 'Counter Client Side',
   },
   {
-    path: '/cloud-storage',
+    path: '/dashboard/pokemons',
     icon: <IoCalculator className="w-6 h-6" />,
-    title: 'Cloud Storage',
-    subtitle: 'Manage Cloud Storage',
+    title: 'Pokemons page',
+    subtitle: 'Generación estática',
   },
   {
     path: '/reports',
@@ -49,8 +49,14 @@ const MenuItems = [
 ]
 
 export default function Sidebar() {
+  const customStyles = {
+    width: '400px',
+    scrollbarWidth: 'none' as const, // Hide scrollbar in Firefox
+    msOverflowStyle: 'none' as const, // Hide scrollbar in IE and Edge
+  }
+
   return (
-    <div id="menu" className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll" style={{width: '400px'}} >
+    <div id="menu" className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 overflow-y-scroll" style={customStyles}>
 
       <div id="logo" className="my-4 px-6">
         <h1 className="flex items-center space-x-2 text-lg md:text-2xl font-bold text-white">
