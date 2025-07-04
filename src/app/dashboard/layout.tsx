@@ -23,7 +23,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         <Sidebar />
 
-        <div className="p-2 w-full text-slate-900" style={customStylesChildren}>
+        <div className="w-full text-slate-900" style={customStylesChildren}>
           {children}
         </div>
 
