@@ -4,24 +4,28 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-  // Generate static params for the first 150 Pokémon
-  // const static151Pokemons = Array.from({ length: 150 }, (_, i) => ({ id: (i + 1).toString() }));
-  const static151Pokemons = Array.from({ length: 150 }).map((_, i) => `${ i + 1 }`);
-  return static151Pokemons.map(id => ({
-    id
+  // Generate static params for the first 151 Pokémon
+  const pokemons = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {
+    next: {
+      revalidate: 60 * 60 * 24, // Revalidate every 24 hours (86,400 seconds)
+    },
+  });
+  const { results } = await pokemons.json();
+  return results.map(pokemon => ({
+    name: pokemon.name
   }));
 }
 
 export const generateMetadata = async ({ params }): Promise<Metadata> => {
   try {
     const resolvedParams = await params;
-    const id = resolvedParams.id;
-    const pokemon = await getPokemon(id);
-    const pokemonId = pokemon?.id ?? id;
-    const name = pokemon?.name ?? 'Unknown';
+    const name = resolvedParams.name;
+    const pokemon = await getPokemon(name);
+    const pokemonId = pokemon?.id ?? name;
+    const pokemonName = pokemon?.name ?? 'Unknown';
 
     return {
-      title: `Pokemon ${pokemonId} - ${name}`,
+      title: `Pokemon ${pokemonId} - ${pokemonName}`,
       description: `Detalles del Pokémon con ID ${pokemonId}`,
     };
   } catch (error) {
@@ -33,9 +37,9 @@ export const generateMetadata = async ({ params }): Promise<Metadata> => {
   }
 };
 
-const getPokemon = async (id: string): Promise<Pokemon | undefined> => {
+const getPokemon = async (name: string): Promise<Pokemon | undefined> => {
   try {
-    const response: Pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    const response: Pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
       // cache: 'force-cache', // Use 'force-cache' to cache the response
       next: {
         revalidate: 60 * 60 * 30, // Revalidate every 30 minutes
@@ -52,8 +56,9 @@ const getPokemon = async (id: string): Promise<Pokemon | undefined> => {
 
 export default async function PokemonPage({ params }) {
   const resolvedParams = await params;
-  const id = resolvedParams.id;
-  const pokemon = await getPokemon(id);
+  const pokemon = await getPokemon(resolvedParams.name);
+  // const name = await params.name;
+  // const pokemon = await getPokemon(name);
 
   if (!pokemon) {
     return <div className="text-center text-red-500">Pokemon not found</div>;
