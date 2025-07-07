@@ -1,5 +1,11 @@
 import PokemonGrid from "@/components/PokemonGrid";
 import type { PokemonsResponse } from "@/pokemons/interfaces/pokemons-response";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Pokémon List',
+  description: 'A page of Pokémon list',
+};
 
 const getPokemons = async (limit = 20, offset = 0) => {
   try {
