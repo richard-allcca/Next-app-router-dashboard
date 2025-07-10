@@ -49,6 +49,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Next.js Fetching Data](https://nextjs.org/docs/app/getting-started/fetching-data)
 - [Next.js Image priority](https://nextjs.org/docs/app/api-reference/components/image#priority)
 - [Next.js Handling Errors](https://nextjs.org/docs/app/getting-started/error-handling)
+- [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+- [General explain Redux](https://www.youtube.com/watch?v=uBJQTmsGI7Y)
+- [Tutorial about Redux](https://www.youtube.com/watch?v=dDZvNZ9kyvg&list=PLCKuOXG0bPi3AWYFJewb-UhN7Y2VjooJL&index=5)
 
 ## How to Use Images
 
@@ -71,4 +74,12 @@ const nextConfig = {
 };
 
 export default nextConfig;
+```
+
+## How to Use Redux Toolkit
+
+> First, you need to install Redux Toolkit and React-Redux:
+
+```bash
+npm install @reduxjs/toolkit react-redux
 ```

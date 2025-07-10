@@ -30,7 +30,7 @@ const getPokemons = async (limit = 20, offset = 0) => {
   }
 };
 
-export default async function PokemonPage() {
+export default async function PokemonsPage() {
   const pokemons = await getPokemons(150);
 
   if (!pokemons || pokemons.length === 0) {
@@ -41,7 +41,7 @@ export default async function PokemonPage() {
     <>
       <div className="flex flex-col">
         <span className="text-center text-5xl my-2" >
-          Listado de Pokémons <small>estático</small>
+          Listado de Pokémons <small className="text-blue-500" >estático</small>
         </span>
       </div>
 
