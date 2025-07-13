@@ -1,4 +1,4 @@
-import PokemonGrid from "@/components/PokemonGrid";
+import PokemonGrid from "@/pokemons/components/PokemonGrid";
 import type { PokemonsResponse } from "@/pokemons/interfaces/pokemons-response";
 import { Metadata } from "next";
 

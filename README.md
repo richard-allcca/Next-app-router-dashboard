@@ -83,3 +83,65 @@ export default nextConfig;
 ```bash
 npm install @reduxjs/toolkit react-redux
 ```
+
+- 2do paso, crea un store `index.ts` en la carpeta `store`:
+
+```javascript
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+```
+
+- 3er paso, crea un slice `counterSlice.ts` en la carpeta `store`:
+
+```javascript
+import { createSlice } from '@reduxjs/toolkit';
+export const counterSlice = createSlice({
+  name: 'counter',
+  initialState: {
+    value: 0,
+  },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    // resto de código...
+  },
+});
+export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+- 4to paso, crea un archivo `ReduxProvider.tsx` en la carpeta `app`:
+
+```javascript
+'use client';
+import { store } from '../store/store';
+import { Provider } from 'react-redux';
+
+export default function ReduxProvider({ children }) {
+  return <Provider store={store}>{children}</Provider>;
+}
+```
+
+- 5to paso, envuelve tu aplicación con el `ReduxProvider` en el archivo `layout.js`:
+
+```javascript
+'use client';
+import ReduxProvider from './store';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
+    </html>
+  );
+}
+```

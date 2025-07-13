@@ -1,4 +1,4 @@
-import PokemonGrid from "@/components/PokemonGrid";
+import PokemonGrid from "@/pokemons/components/PokemonGrid";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
