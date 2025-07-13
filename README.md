@@ -145,3 +145,21 @@ export default function RootLayout({ children }) {
   );
 }
 ```
+
+## API Routes
+
+> Next.js API routes provide a solution to build your API with JavaScript and TypeScript. It is recommended to have a separate folder for API routes, typically under the `app` directory.
+
+```javascript
+import { NextResponse } from "next/server";
+
+export const GET = (request: Request) => {
+  console.log({ method: request.method });
+
+  return NextResponse.json({
+    message: "Hello from the API route",
+    method: request.method,
+    url: request.url,
+    headers: Object.fromEntries(request.headers.entries()),
+  });
+};

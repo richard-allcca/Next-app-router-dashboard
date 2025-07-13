@@ -9,13 +9,59 @@ interface CartCounterProps {
   value?: number;
 }
 
+export interface CounterResponse {
+  message: string;
+  method:  string;
+  url:     string;
+  headers: Headers;
+  count:  number;
+}
+
+export interface Headers {
+  accept:              string;
+  "accept-encoding":   string;
+  connection:          string;
+  host:                string;
+  "user-agent":        string;
+  "x-forwarded-for":   string;
+  "x-forwarded-host":  string;
+  "x-forwarded-port":  string;
+  "x-forwarded-proto": string;
+}
+
+const getApiCounter = async (): Promise<CounterResponse> => {
+  const response = await fetch('/api/counter', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch counter');
+  }
+
+  return response.json();
+}
+
 const CartCounter = ({value = 0}: CartCounterProps) => {
   const count = useAppSelector((state) => state.counter.count);
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(initCounterState(value));
+  // }, [dispatch, value])
+
   useEffect(() => {
-    dispatch(initCounterState(value));
-  }, [dispatch, value])
+    getApiCounter()
+      .then((data) => {
+        console.log('API Response:', data);
+        dispatch(initCounterState(data.count));
+      })
+      .catch((error) => {
+        console.error('Error fetching counter:', error);
+      });
+  }, [dispatch]);
 
   return (
     <>
