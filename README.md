@@ -52,6 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 - [General explain Redux](https://www.youtube.com/watch?v=uBJQTmsGI7Y)
 - [Tutorial about Redux](https://www.youtube.com/watch?v=dDZvNZ9kyvg&list=PLCKuOXG0bPi3AWYFJewb-UhN7Y2VjooJL&index=5)
+- [Get default middleware](https://redux-toolkit.js.org/api/getDefaultMiddleware)
 
 ## How to Use Images
 

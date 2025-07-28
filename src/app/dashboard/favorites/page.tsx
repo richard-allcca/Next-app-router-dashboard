@@ -1,4 +1,5 @@
 import PokemonGrid from "@/pokemons/components/PokemonGrid";
+import { PokemonGridFavorite } from "@/pokemons/components/PokemonGridFavorite";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description: 'A page of favorite Pokémon',
 };
 
-export default async function PokemonsPage() {
+export default function PokemonsPage() {
 
   return (
     <>
@@ -14,6 +15,7 @@ export default async function PokemonsPage() {
         <span className="text-center text-5xl my-2" >
           Pokémons Favoritos <small className="text-blue-500" >Global state</small>
         </span>
+        <PokemonGridFavorite />
       </div>
 
       <PokemonGrid pokemons={[]} />

@@ -18,7 +18,6 @@ const getPokemons = async (limit = 20, offset = 0) => {
       return {
         id,
         name: pokemon.name,
-        url: pokemon.url,
       };
     });
 
