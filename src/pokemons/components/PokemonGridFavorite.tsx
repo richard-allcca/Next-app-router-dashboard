@@ -4,10 +4,13 @@ import { useAppSelector } from '@/store';
 import { IoHeartOutline } from 'react-icons/io5';
 import { SimplePokemon } from '../interfaces/simple-pokemon';
 import PokemonGrid from './PokemonGrid';
+import { useMemo } from 'react';
 
 export const PokemonGridFavorite = () => {
-  const pokemons = useAppSelector((state) => Object.values(state.pokemons));
-  const newList = [...pokemons];
+  const favorites = useAppSelector((state) => state.pokemons.favorites);
+
+  // Memoize the list of favorite pokemons
+  const newList = useMemo(() => Object.values(favorites), [favorites]);
 
   const renderPokemons = (pokemons: SimplePokemon[]) => {
     if (pokemons.length === 0) return <NoFavorites />;
@@ -27,7 +30,6 @@ export const PokemonGridFavorite = () => {
 };
 
 export const NoFavorites = () => {
-
   return (
     <div className="flex flex-col h-[50vh] justify-center items-center">
       <IoHeartOutline size={100} className="text-red-500" />
